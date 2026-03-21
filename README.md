@@ -1,1 +1,2 @@
 # testrepofromgithub
+SVEIKS NO GITHUB
