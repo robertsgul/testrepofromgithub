@@ -26,7 +26,7 @@ window.SITE = {
   menu: [
     { name: "Margerita", desc: "Tomātu mērce, mocarella, baziliks" },
      { name: "Salami", desc: "Tomātu mērce, salami desa, siers" },
-     { name: "Bekona", desc: "Tomātu mērce, bekona gabalini, siers, sipoli" },
+     { name: "Bekona", desc: "Tomātu mērce, bekona gabaliņi, siers, sīpoli" },
      { name: "Chorizo", desc: "Tomātu mērce, spāņu pikantā desa, siers, sīpoli, pikantais medus" },
   ],
 };
