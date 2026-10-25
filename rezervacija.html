@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pieteikt picu pasākumam — R.C. Pica</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="header"></header>
+<section><div class="wrap">
+  <h2>Pieteikt ballītei / festivālam</h2>
+  <p>Pastāsti par savu pasākumu — mēs sazināsimies, lai saskaņotu detaļas un cenu.</p>
+  <form id="form">
+    <div class="two">
+      <label>Vārds, uzvārds<input name="name" required></label>
+      <label>Tālrunis<input name="phone" type="tel" required></label>
+    </div>
+    <label>E-pasts<input name="email" type="email"></label>
+    <div class="two">
+      <label>Pasākuma veids
+        <select name="type" required>
+          <option>Ballīte / dzimšanas diena</option><option>Kāzas</option>
+          <option>Festivāls</option><option>Uzņēmuma pasākums</option><option>Cits</option>
+        </select></label>
+      <label>Datums<input name="date" type="date" required></label>
+    </div>
+    <div class="two">
+      <label>Vieta (pilsēta / adrese)<input name="place" required></label>
+      <label>Aptuvens viesu skaits<input name="guests" type="number" min="1" required></label>
+    </div>
+    <label>Papildu informācija<textarea name="msg" rows="4"></textarea></label>
+    <button class="btn" type="submit">Nosūtīt pieteikumu</button>
+    <div class="note" id="note" hidden></div>
+  </form>
+  <h3>Vai arī sazinies tieši</h3>
+  <div id="contact"></div>
+</div></section>
+<footer id="footer"></footer>
+<script src="site.js"></script>
+<script src="common.js"></script>
+<script>
+document.getElementById('contact').innerHTML = window.CONTACT_HTML;
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const d = Object.fromEntries(new FormData(e.target));
+  const body = `Vārds: ${d.name}\nTālrunis: ${d.phone}\nE-pasts: ${d.email || '-'}\nVeids: ${d.type}\nDatums: ${d.date}\nVieta: ${d.place}\nViesu skaits: ${d.guests}\n\n${d.msg || ''}`;
+  const note = document.getElementById('note');
+  note.hidden = false;
+  if (S.bookingEmail) {
+    location.href = `mailto:${S.bookingEmail}?subject=${encodeURIComponent('Pasākuma pieteikums: ' + d.type + ' ' + d.date)}&body=${encodeURIComponent(body)}`;
+    note.textContent = 'Atveram tavu e-pasta programmu — nospied "Sūtīt", lai pabeigtu pieteikumu. Paldies!';
+  } else {
+    navigator.clipboard?.writeText(body).catch(() => {});
+    note.innerHTML = `Pieteikuma teksts ir nokopēts. Lūdzu, nosūti to mums <a href="${igUrl}" target="_blank" rel="noopener">Instagram @${esc(S.instagram)}</a> ziņā. Paldies!<pre style="white-space:pre-wrap">${esc(body)}</pre>`;
+  }
+});
+</script>
+</body>
+</html>
