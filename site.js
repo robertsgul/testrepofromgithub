@@ -5,7 +5,7 @@ window.SITE = {
   instagram: "r.c.pica",
   phones: ["+371 29444916", "+371 27077997"],
   email: "roberts.gulbis13@gmail.com",            // piem. "info@rcpica.lv"
-  bookingEmail: "roberts.gulbis13@gmail.com",     // uz kuru e-pastu sūtīt pieteikumus (ja nav, tiek rādīts tikai Instagram)
+  bookingEmail: "roberts.gulbis13@gmail.com",     // uz kuru e-pastu sūtīt pieteikumus (pieteikumi tiek sūtīti automātiski caur formsubmit.co)
   location: "Ceļojam pa visu Latvijas teritoriju",
   tagline: "Brāļu ceļojošā picērija",
   award: "European Street Food Awards 2026 — EXTRA MILE",
