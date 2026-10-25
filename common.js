@@ -3,7 +3,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 const igUrl = `https://www.instagram.com/${S.instagram}/`;
 
 document.getElementById('header').innerHTML = `
-<div class="wrap"><a class="logo" href="index.html">🍕 ${esc(S.brand)}</a>
+<div class="wrap"><a class="logo" href="index.html"><img src="${esc(S.logo)}" alt="${esc(S.brand)}" style="height:${+S.logoHeight || 44}px;width:auto;border-radius:50%;display:block"></a>
 <nav><a href="index.html#par-mums">Par mums</a><a href="index.html#galerija">Galerija</a><a href="index.html#video">Video</a><a href="index.html#edienkarte">Ēdienkarte</a><a href="index.html#kontakti">Kontakti</a><a class="btn" style="margin-left:16px;padding:6px 16px" href="rezervacija.html">Pieteikt</a></nav></div>`;
 
 const contact = [
