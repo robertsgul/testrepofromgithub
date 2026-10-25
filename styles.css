@@ -5,7 +5,7 @@ a{color:var(--red)}
 .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
 header{position:sticky;top:0;z-index:10;background:var(--dark);color:#fff}
 header .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:10px 16px}
-.logo{font-weight:800;font-size:1.3rem;color:var(--gold);text-decoration:none}
+.logo{display:flex;align-items:center;font-weight:800;font-size:1.3rem;color:var(--gold);text-decoration:none}
 nav a{color:#fff;text-decoration:none;margin-left:16px;font-weight:600}
 nav a:hover{color:var(--gold)}
 .hero{background:linear-gradient(rgba(42,26,20,.75),rgba(42,26,20,.75)),radial-gradient(circle at 30% 30%,#c8321e,#2a1a14);color:#fff;text-align:center;padding:90px 16px}
@@ -22,7 +22,8 @@ h2{font-size:2rem;margin:0 0 20px;color:var(--red)}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .gallery img,.ph{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block}
 .ph{background:repeating-linear-gradient(45deg,#f6e2bd,#f6e2bd 12px,#f1d7a4 12px,#f1d7a4 24px);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);padding:12px;font-size:.9rem}
-.video{max-width:420px;margin:0 auto}
+.video{margin:0 auto}
+.video video{max-height:80vh;}
 .video video,.video iframe{width:100%;border-radius:14px;border:0;background:#000}
 .menu{list-style:none;padding:0;margin:0}
 .menu li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px dashed #d9c3a0}

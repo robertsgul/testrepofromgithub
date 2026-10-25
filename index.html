@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>R.C. Pica — brāļu ceļojošā picērija</title>
 <meta name="description" content="R.C. Pica — brāļu ceļojošā picērija. Ballītes, svētki un kāzas visā Latvijā. European Street Food Awards 2026 EXTRA MILE.">
+<link rel="icon" href="assets/logo.png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -67,6 +68,7 @@ g.innerHTML = photos.map(p => p.placeholder
 
 // Video: vispirms vietējais fails, citādi Instagram reel, citādi saite uz Instagram
 const vb = document.getElementById('videoBox');
+vb.style.maxWidth = (S.video.maxWidth || 900) + 'px';
 const igFallback = () => {
   const reel = S.video.instagramReel;
   vb.innerHTML = reel
