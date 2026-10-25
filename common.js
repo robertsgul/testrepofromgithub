@@ -7,7 +7,7 @@ document.getElementById('header').innerHTML = `
 <nav><a href="index.html#par-mums">Par mums</a><a href="index.html#galerija">Galerija</a><a href="index.html#video">Video</a><a href="index.html#edienkarte">Ēdienkarte</a><a href="index.html#kontakti">Kontakti</a><a class="btn" style="margin-left:16px;padding:6px 16px" href="rezervacija.html">Pieteikt</a></nav></div>`;
 
 const contact = [
-  S.phone && `📞 <a href="tel:${esc(S.phone.replace(/\s/g,''))}">${esc(S.phone)}</a>`,
+  ...(S.phones || []).map(n => `📞 <a href="tel:${esc(n.replace(/\s/g,''))}">${esc(n)}</a>`),
   S.email && `✉️ <a href="mailto:${esc(S.email)}">${esc(S.email)}</a>`,
   S.location && `📍 ${esc(S.location)}`,
   S.hours && `🕒 ${esc(S.hours)}`,
@@ -15,4 +15,4 @@ const contact = [
 ].filter(Boolean);
 window.CONTACT_HTML = contact.map(c => `<p>${c}</p>`).join('');
 
-document.getElementById('footer').innerHTML = `<div class="wrap"><p><strong>${esc(S.brand)}</strong> — brāļu cepta pica 🍕</p>${contact.join(' &nbsp;·&nbsp; ')}<p>© ${new Date().getFullYear()} ${esc(S.brand)}</p></div>`;
+document.getElementById('footer').innerHTML = `<div class="wrap"><p><strong>${esc(S.brand)}</strong> — ${esc(S.tagline)} 🍕</p>${contact.join(' &nbsp;·&nbsp; ')}<p>© ${new Date().getFullYear()} ${esc(S.brand)}</p></div>`;

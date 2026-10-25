@@ -3,10 +3,12 @@
 window.SITE = {
   brand: "R.C. Pica",
   instagram: "r.c.pica",
-  phone: null,            // piem. "+371 20000000"
+  phones: ["+371 29444916", "+371 27077997"],
   email: null,            // piem. "info@rcpica.lv"
   bookingEmail: null,     // uz kuru e-pastu sūtīt pieteikumus (ja nav, tiek rādīts tikai Instagram)
-  location: null,         // piem. "Rīga un visa Latvija"
+  location: "Ceļojam pa visu Latvijas teritoriju",
+  tagline: "Brāļu ceļojošā picērija",
+  award: "European Street Food Awards 2026 — EXTRA MILE",
   hours: null,            // piem. "Pieteikumi: katru dienu 10:00–20:00"
   // Bildes: ieliec failus mapē assets/photos un ieraksti nosaukumus šeit.
   photos: [
