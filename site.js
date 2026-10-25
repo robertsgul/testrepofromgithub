@@ -4,8 +4,8 @@ window.SITE = {
   brand: "R.C. Pica",
   instagram: "r.c.pica",
   phones: ["+371 29444916", "+371 27077997"],
-  email: null,            // piem. "info@rcpica.lv"
-  bookingEmail: null,     // uz kuru e-pastu sūtīt pieteikumus (ja nav, tiek rādīts tikai Instagram)
+  email: "roberts.gulbis13@gmail.com",            // piem. "info@rcpica.lv"
+  bookingEmail: "roberts.gulbis13@gmail.com",     // uz kuru e-pastu sūtīt pieteikumus (ja nav, tiek rādīts tikai Instagram)
   location: "Ceļojam pa visu Latvijas teritoriju",
   tagline: "Brāļu ceļojošā picērija",
   award: "European Street Food Awards 2026 — EXTRA MILE",
@@ -24,6 +24,9 @@ window.SITE = {
   video: { file: "assets/video/pica.mp4", maxWidth: 900, instagramReel: null /* "https://www.instagram.com/reel/XXXX/" */ },
   // Ēdienkarte (ieraksti savas picas un cenas):
   menu: [
-    // { name: "Margerita", desc: "Tomātu mērce, mocarella, baziliks", price: "7 €" },
+    { name: "Margerita", desc: "Tomātu mērce, mocarella, baziliks" },
+     { name: "Salami", desc: "Tomātu mērce, salami desa, siers" },
+     { name: "Bekona", desc: "Tomātu mērce, bekona gabalini, siers, sipoli" },
+     { name: "Chorizo", desc: "Tomātu mērce, spāņu pikantā desa, siers, sīpoli, pikantais medus" },
   ],
 };
