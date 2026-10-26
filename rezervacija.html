@@ -42,19 +42,39 @@
 <script src="common.js?v=3"></script>
 <script>
 document.getElementById('contact').innerHTML = window.CONTACT_HTML;
-document.getElementById('form').addEventListener('submit', e => {
+document.getElementById('form').addEventListener('submit', async e => {
   e.preventDefault();
-  const d = Object.fromEntries(new FormData(e.target));
+  const form = e.target, btn = form.querySelector('button');
+  const d = Object.fromEntries(new FormData(form));
   const body = `Vārds: ${d.name}\nTālrunis: ${d.phone}\nE-pasts: ${d.email || '-'}\nVeids: ${d.type}\nDatums: ${d.date}\nVieta: ${d.place}\nViesu skaits: ${d.guests}\n\n${d.msg || ''}`;
   const note = document.getElementById('note');
   note.hidden = false;
-  if (S.bookingEmail) {
-    location.href = `mailto:${S.bookingEmail}?subject=${encodeURIComponent('Pasākuma pieteikums: ' + d.type + ' ' + d.date)}&body=${encodeURIComponent(body)}`;
-    note.textContent = 'Atveram tavu e-pasta programmu — nospied "Sūtīt", lai pabeigtu pieteikumu. Paldies!';
-  } else {
+  const fallback = () => {
     navigator.clipboard?.writeText(body).catch(() => {});
-    note.innerHTML = `Pieteikuma teksts ir nokopēts. Lūdzu, nosūti to mums <a href="${igUrl}" target="_blank" rel="noopener">Instagram @${esc(S.instagram)}</a> ziņā. Paldies!<pre style="white-space:pre-wrap">${esc(body)}</pre>`;
-  }
+    note.innerHTML = `Neizdevās nosūtīt automātiski. Lūdzu, piezvani mums vai nosūti šo tekstu mums <a href="${igUrl}" target="_blank" rel="noopener">Instagram @${esc(S.instagram)}</a> ziņā (teksts ir nokopēts):<pre style="white-space:pre-wrap">${esc(body)}</pre>`;
+    btn.disabled = false;
+  };
+  if (!S.bookingEmail) return fallback();
+  btn.disabled = true;
+  note.textContent = 'Sūtām pieteikumu…';
+  try {
+    const r = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(S.bookingEmail), {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: 'Pasākuma pieteikums: ' + d.type + ' ' + d.date,
+        _template: 'table', _captcha: 'false',
+        'Vārds': d.name, 'Tālrunis': d.phone, 'E-pasts': d.email || '-',
+        'Pasākuma veids': d.type, 'Datums': d.date, 'Vieta': d.place,
+        'Viesu skaits': d.guests, 'Papildu informācija': d.msg || '-',
+        _replyto: d.email || undefined,
+      }),
+    });
+    const j = await r.json();
+    if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || r.status);
+    note.textContent = 'Paldies! Pieteikums nosūtīts — drīz ar jums sazināsimies. 🍕';
+    form.reset(); btn.disabled = false;
+  } catch (err) { console.error(err); fallback(); }
 });
 </script>
 </body>
